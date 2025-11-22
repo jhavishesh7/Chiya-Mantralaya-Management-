@@ -1,7 +1,7 @@
 {
-  "name": "Tea Restaurant Management System",
-  "short_name": "Tea Restaurant",
-  "description": "Complete restaurant management system for tea cafes",
+  "name": "Chiya Mantralaya Management System",
+  "short_name": "Chiya Mantralaya",
+  "description": "Complete restaurant management system for Chiya Mantralaya",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -9,15 +9,9 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
       "purpose": "any maskable"
     }
   ],

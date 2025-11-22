@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tea-restaurant-v1';
+const CACHE_NAME = 'chiya-mantralaya-v1';
 const urlsToCache = [
   '/',
   '/index.html',

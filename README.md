@@ -1,6 +1,6 @@
-# Tea Restaurant Management System
+# Chiya Mantralaya Management System
 
-A production-ready restaurant management application built with React, TypeScript, and Supabase. Features comprehensive role-based access control, real-time order tracking, payment processing, and financial reporting.
+A production-ready restaurant management application built with React, TypeScript, and Supabase for Chiya Mantralaya. Features comprehensive role-based access control, real-time order tracking, payment processing, and financial reporting.
 
 ## Features
 
@@ -81,7 +81,7 @@ A production-ready restaurant management application built with React, TypeScrip
 1. Clone the repository:
 ```bash
 git clone <repository-url>
-cd tea-restaurant-management
+cd chiya-mantralaya-management
 ```
 
 2. Install dependencies:

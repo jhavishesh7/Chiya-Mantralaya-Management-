@@ -11,6 +11,7 @@ import { ExpenseManagement } from './pages/admin/ExpenseManagement';
 import { RevenueReport } from './pages/admin/RevenueReport';
 import { Navigation } from './components/Navigation';
 import { useToast } from './components/Toast';
+import { InstallPrompt } from './components/InstallPrompt';
 
 function AppContent() {
   const { user, profile, loading } = useAuth();
@@ -35,6 +36,7 @@ function AppContent() {
             onRegistrationComplete={() => setAuthView('awaiting')}
           />
           <ToastContainer />
+          <InstallPrompt />
         </>
       );
     }
@@ -44,6 +46,7 @@ function AppContent() {
         <>
           <AwaitingVerification />
           <ToastContainer />
+          <InstallPrompt />
         </>
       );
     }
@@ -52,6 +55,7 @@ function AppContent() {
       <>
         <Login onSwitchToRegister={() => setAuthView('register')} />
         <ToastContainer />
+        <InstallPrompt />
       </>
     );
   }
@@ -61,6 +65,7 @@ function AppContent() {
       <>
         <AwaitingVerification />
         <ToastContainer />
+        <InstallPrompt />
       </>
     );
   }
@@ -81,6 +86,7 @@ function AppContent() {
       </main>
 
       <ToastContainer />
+      <InstallPrompt />
     </div>
   );
 }

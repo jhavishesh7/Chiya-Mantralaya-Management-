@@ -98,69 +98,71 @@ export function ExpenseManagement() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-3">
-          <Receipt className="w-8 h-8 text-orange-500" />
-          <h2 className="text-2xl font-bold text-gray-800">Expense Management</h2>
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4 sm:mb-6">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <Receipt className="w-6 h-6 sm:w-8 sm:h-8 text-orange-500" />
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Expense Management</h2>
         </div>
         <button
           onClick={() => setShowModal(true)}
-          className="flex items-center gap-2 bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors"
+          className="flex items-center gap-2 bg-orange-500 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors text-sm sm:text-base w-full sm:w-auto justify-center"
         >
-          <Plus className="w-5 h-5" />
+          <Plus className="w-4 h-4 sm:w-5 sm:h-5" />
           Add Expense
         </button>
       </div>
 
-      <div className="bg-white rounded-lg shadow p-6 mb-6">
+      <div className="bg-white rounded-lg shadow p-4 sm:p-6 mb-4 sm:mb-6">
         <div className="text-center">
-          <p className="text-gray-600 mb-2">Today's Expenses</p>
-          <p className="text-3xl font-bold text-red-600">₹{getTodayTotal().toFixed(2)}</p>
+          <p className="text-sm sm:text-base text-gray-600 mb-2">Today's Expenses</p>
+          <p className="text-2xl sm:text-3xl font-bold text-red-600">₹{getTodayTotal().toFixed(2)}</p>
         </div>
       </div>
 
       <div className="bg-white rounded-lg shadow overflow-hidden">
-        <table className="w-full">
-          <thead className="bg-gray-50 border-b border-gray-200">
-            <tr>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                Title
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                Amount
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                Recorded By
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                Date
-              </th>
-              <th className="px-6 py-3 text-right text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                Actions
-              </th>
-            </tr>
-          </thead>
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[640px]">
+            <thead className="bg-gray-50 border-b border-gray-200">
+              <tr>
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                  Title
+                </th>
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                  Amount
+                </th>
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider hidden sm:table-cell">
+                  Recorded By
+                </th>
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider hidden md:table-cell">
+                  Date
+                </th>
+                <th className="px-4 sm:px-6 py-3 text-right text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                  Actions
+                </th>
+              </tr>
+            </thead>
           <tbody className="divide-y divide-gray-200">
             {expenses.map((expense) => (
               <tr key={expense.id} className="hover:bg-gray-50 transition-colors">
-                <td className="px-6 py-4">
-                  <div className="font-medium text-gray-800">{expense.title}</div>
+                <td className="px-4 sm:px-6 py-3 sm:py-4">
+                  <div className="font-medium text-sm sm:text-base text-gray-800">{expense.title}</div>
                 </td>
-                <td className="px-6 py-4">
-                  <div className="font-semibold text-red-600">₹{expense.amount.toFixed(2)}</div>
+                <td className="px-4 sm:px-6 py-3 sm:py-4">
+                  <div className="font-semibold text-sm sm:text-base text-red-600">₹{expense.amount.toFixed(2)}</div>
                 </td>
-                <td className="px-6 py-4">
-                  <div className="text-gray-600">{expense.profiles?.name || 'Unknown'}</div>
+                <td className="px-4 sm:px-6 py-3 sm:py-4 hidden sm:table-cell">
+                  <div className="text-sm text-gray-600">{expense.profiles?.name || 'Unknown'}</div>
                 </td>
-                <td className="px-6 py-4">
-                  <div className="text-gray-600">
+                <td className="px-4 sm:px-6 py-3 sm:py-4 hidden md:table-cell">
+                  <div className="text-xs sm:text-sm text-gray-600">
                     {new Date(expense.created_at).toLocaleString()}
                   </div>
                 </td>
-                <td className="px-6 py-4 text-right">
+                <td className="px-4 sm:px-6 py-3 sm:py-4 text-right">
                   <button
                     onClick={() => handleDelete(expense.id)}
                     className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                    title="Delete expense"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
@@ -169,18 +171,19 @@ export function ExpenseManagement() {
             ))}
           </tbody>
         </table>
+        </div>
       </div>
 
       {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg max-w-md w-full p-6">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-xl font-bold text-gray-800">Add Expense</h3>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4">
+          <div className="bg-white rounded-lg max-w-md w-full p-4 sm:p-6 max-h-[95vh] overflow-y-auto">
+            <div className="flex items-center justify-between mb-4 gap-3">
+              <h3 className="text-lg sm:text-xl font-bold text-gray-800 truncate">Add Expense</h3>
               <button
                 onClick={() => setShowModal(false)}
-                className="text-gray-500 hover:text-gray-700"
+                className="text-gray-500 hover:text-gray-700 flex-shrink-0 p-1"
               >
-                <X className="w-6 h-6" />
+                <X className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
             </div>
 

@@ -137,53 +137,55 @@ export function MenuManagement() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-3">
-          <Coffee className="w-8 h-8 text-orange-500" />
-          <h2 className="text-2xl font-bold text-gray-800">Menu Management</h2>
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4 sm:mb-6">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <Coffee className="w-6 h-6 sm:w-8 sm:h-8 text-orange-500" />
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Menu Management</h2>
         </div>
         <button
           onClick={openAddModal}
-          className="flex items-center gap-2 bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors"
+          className="flex items-center gap-2 bg-orange-500 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors text-sm sm:text-base w-full sm:w-auto justify-center"
         >
-          <Plus className="w-5 h-5" />
+          <Plus className="w-4 h-4 sm:w-5 sm:h-5" />
           Add Item
         </button>
       </div>
 
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         {Object.entries(groupedItems).map(([category, items]) => (
           <div key={category} className="bg-white rounded-lg shadow overflow-hidden">
-            <div className="bg-gray-50 px-6 py-3 border-b border-gray-200">
-              <h3 className="font-semibold text-gray-800">{category}</h3>
+            <div className="bg-gray-50 px-4 sm:px-6 py-2 sm:py-3 border-b border-gray-200">
+              <h3 className="font-semibold text-sm sm:text-base text-gray-800">{category}</h3>
             </div>
             <div className="divide-y divide-gray-200">
               {items.map((item) => (
                 <div
                   key={item.id}
-                  className="px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors"
+                  className="px-4 sm:px-6 py-3 sm:py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 hover:bg-gray-50 transition-colors"
                 >
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3">
-                      <h4 className="font-medium text-gray-800">{item.name}</h4>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+                      <h4 className="font-medium text-sm sm:text-base text-gray-800">{item.name}</h4>
                       {!item.active && (
                         <span className="px-2 py-1 text-xs bg-red-100 text-red-700 rounded">
                           Inactive
                         </span>
                       )}
                     </div>
-                    <p className="text-sm text-gray-600 mt-1">₹{item.price.toFixed(2)}</p>
+                    <p className="text-xs sm:text-sm text-gray-600 mt-1">₹{item.price.toFixed(2)}</p>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 self-end sm:self-auto">
                     <button
                       onClick={() => openEditModal(item)}
                       className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                      title="Edit"
                     >
                       <Edit2 className="w-4 h-4" />
                     </button>
                     <button
                       onClick={() => handleDelete(item.id)}
                       className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                      title="Delete"
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
@@ -196,17 +198,17 @@ export function MenuManagement() {
       </div>
 
       {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg max-w-md w-full p-6">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-xl font-bold text-gray-800">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4">
+          <div className="bg-white rounded-lg max-w-md w-full p-4 sm:p-6 max-h-[95vh] overflow-y-auto">
+            <div className="flex items-center justify-between mb-4 gap-3">
+              <h3 className="text-lg sm:text-xl font-bold text-gray-800 truncate">
                 {editingItem ? 'Edit Menu Item' : 'Add Menu Item'}
               </h3>
               <button
                 onClick={() => setShowModal(false)}
-                className="text-gray-500 hover:text-gray-700"
+                className="text-gray-500 hover:text-gray-700 flex-shrink-0 p-1"
               >
-                <X className="w-6 h-6" />
+                <X className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
             </div>
 

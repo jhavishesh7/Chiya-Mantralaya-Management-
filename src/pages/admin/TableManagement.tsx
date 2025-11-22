@@ -90,25 +90,25 @@ export function TableManagement() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-3">
-          <LayoutGrid className="w-8 h-8 text-orange-500" />
-          <h2 className="text-2xl font-bold text-gray-800">Table Management</h2>
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4 sm:mb-6">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <LayoutGrid className="w-6 h-6 sm:w-8 sm:h-8 text-orange-500" />
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Table Management</h2>
         </div>
         <button
           onClick={() => setShowModal(true)}
-          className="flex items-center gap-2 bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors"
+          className="flex items-center gap-2 bg-orange-500 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors text-sm sm:text-base w-full sm:w-auto justify-center"
         >
-          <Plus className="w-5 h-5" />
+          <Plus className="w-4 h-4 sm:w-5 sm:h-5" />
           Add Table
         </button>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
         {tables.map((table) => (
           <div
             key={table.id}
-            className={`relative bg-white rounded-lg shadow p-6 transition-all ${
+            className={`relative bg-white rounded-lg shadow p-4 sm:p-6 transition-all ${
               table.status === 'occupied'
                 ? 'border-2 border-red-400 bg-red-50'
                 : 'border-2 border-green-400 bg-green-50'
@@ -116,13 +116,14 @@ export function TableManagement() {
           >
             <button
               onClick={() => handleDeleteTable(table.id)}
-              className="absolute top-2 right-2 p-1 text-gray-400 hover:text-red-600 hover:bg-white rounded transition-colors"
+              className="absolute top-1.5 right-1.5 sm:top-2 sm:right-2 p-1 text-gray-400 hover:text-red-600 hover:bg-white rounded transition-colors"
+              title="Delete table"
             >
-              <Trash2 className="w-4 h-4" />
+              <Trash2 className="w-3 h-3 sm:w-4 sm:h-4" />
             </button>
 
             <div className="text-center">
-              <div className="text-3xl font-bold text-gray-800 mb-2">
+              <div className="text-2xl sm:text-3xl font-bold text-gray-800 mb-1 sm:mb-2">
                 {table.table_number}
               </div>
               <div
@@ -138,15 +139,15 @@ export function TableManagement() {
       </div>
 
       {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg max-w-md w-full p-6">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-xl font-bold text-gray-800">Add Table</h3>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4">
+          <div className="bg-white rounded-lg max-w-md w-full p-4 sm:p-6 max-h-[95vh] overflow-y-auto">
+            <div className="flex items-center justify-between mb-4 gap-3">
+              <h3 className="text-lg sm:text-xl font-bold text-gray-800 truncate">Add Table</h3>
               <button
                 onClick={() => setShowModal(false)}
-                className="text-gray-500 hover:text-gray-700"
+                className="text-gray-500 hover:text-gray-700 flex-shrink-0 p-1"
               >
-                <X className="w-6 h-6" />
+                <X className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
             </div>
 

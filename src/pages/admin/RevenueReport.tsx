@@ -128,23 +128,23 @@ export function RevenueReport() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg shadow p-6 border-2 border-blue-200">
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg shadow p-4 sm:p-6 border-2 border-blue-200">
               <div className="flex items-center justify-between mb-2">
-                <h3 className="text-lg font-semibold text-gray-800">Cash</h3>
-                <TrendingUp className="w-6 h-6 text-blue-600" />
+                <h3 className="text-base sm:text-lg font-semibold text-gray-800">Cash</h3>
+                <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
               </div>
-              <p className="text-4xl font-bold text-blue-700">
+              <p className="text-2xl sm:text-3xl lg:text-4xl font-bold text-blue-700">
                 ₹{summary.cash_revenue.toFixed(2)}
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg shadow p-6 border-2 border-purple-200">
+            <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg shadow p-4 sm:p-6 border-2 border-purple-200">
               <div className="flex items-center justify-between mb-2">
-                <h3 className="text-lg font-semibold text-gray-800">Online</h3>
-                <TrendingUp className="w-6 h-6 text-purple-600" />
+                <h3 className="text-base sm:text-lg font-semibold text-gray-800">Online</h3>
+                <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-purple-600" />
               </div>
-              <p className="text-4xl font-bold text-purple-700">
+              <p className="text-2xl sm:text-3xl lg:text-4xl font-bold text-purple-700">
                 ₹{summary.online_revenue.toFixed(2)}
               </p>
             </div>

@@ -43,17 +43,17 @@ export function OrderDetailModal({
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-        <div className="flex items-center justify-between p-6 border-b border-gray-200 sticky top-0 bg-white">
-          <h3 className="text-2xl font-bold text-gray-800">Order Details</h3>
-          <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
-            <X className="w-6 h-6" />
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4">
+      <div className="bg-white rounded-lg max-w-2xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto">
+        <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-200 sticky top-0 bg-white z-10">
+          <h3 className="text-lg sm:text-2xl font-bold text-gray-800">Order Details</h3>
+          <button onClick={onClose} className="text-gray-500 hover:text-gray-700 p-1">
+            <X className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
         </div>
 
-        <div className="p-6 space-y-6">
-          <div className="grid md:grid-cols-2 gap-4">
+        <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
+          <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
             <div>
               <p className="text-sm text-gray-600 mb-1">Table</p>
               <p className="text-lg font-semibold text-gray-800">
@@ -130,13 +130,13 @@ export function OrderDetailModal({
           </div>
         </div>
 
-        <div className="p-6 border-t border-gray-200 space-y-3">
+        <div className="p-4 sm:p-6 border-t border-gray-200 space-y-3">
           {canUpdateStatus && (
-            <div className="flex gap-2 flex-wrap">
+            <div className="flex flex-col sm:flex-row gap-2">
               {order.status === 'taken' && (
                 <button
                   onClick={() => handleStatusUpdate('prepared')}
-                  className="flex items-center gap-2 px-4 py-2 bg-yellow-100 text-yellow-700 rounded-lg hover:bg-yellow-200 transition-colors font-medium"
+                  className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-yellow-100 text-yellow-700 rounded-lg hover:bg-yellow-200 transition-colors font-medium text-sm sm:text-base"
                 >
                   <CheckCircle className="w-4 h-4" />
                   Mark as Prepared
@@ -146,7 +146,7 @@ export function OrderDetailModal({
               {order.status === 'prepared' && (
                 <button
                   onClick={() => handleStatusUpdate('delivered')}
-                  className="flex items-center gap-2 px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors font-medium"
+                  className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors font-medium text-sm sm:text-base"
                 >
                   <CheckCircle className="w-4 h-4" />
                   Mark as Delivered
@@ -156,7 +156,7 @@ export function OrderDetailModal({
               {isAdmin && order.status === 'delivered' && (
                 <button
                   onClick={handlePaymentClick}
-                  className="flex items-center gap-2 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors font-medium"
+                  className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors font-medium text-sm sm:text-base"
                 >
                   <CreditCard className="w-4 h-4" />
                   Make Payment
@@ -166,7 +166,7 @@ export function OrderDetailModal({
           )}
           <button
             onClick={onClose}
-            className="w-full px-4 py-3 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors font-medium"
+            className="w-full px-4 py-2 sm:py-3 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors font-medium text-sm sm:text-base"
           >
             Close
           </button>
