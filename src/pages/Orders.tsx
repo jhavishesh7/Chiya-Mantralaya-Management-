@@ -38,7 +38,7 @@ export function Orders() {
       const [ordersRes, tablesRes, menuRes] = await Promise.all([
         supabase
           .from('orders')
-          .select('*, cafe_tables(*), profiles(name)')
+          .select('*, cafe_tables(*), profiles!employee_id(name)')
           .order('created_at', { ascending: false }),
         supabase.from('cafe_tables').select('*').order('table_number'),
         supabase.from('menu_items').select('*').eq('active', true),
@@ -89,7 +89,7 @@ export function Orders() {
       // Fetch updated order data
       const { data: updatedOrderData, error: fetchError } = await supabase
         .from('orders')
-        .select('*, cafe_tables(*), profiles(name)')
+        .select('*, cafe_tables(*), profiles!employee_id(name)')
         .eq('id', orderId)
         .single();
 
@@ -103,7 +103,7 @@ export function Orders() {
       // Refresh orders list
       const { data: ordersData } = await supabase
         .from('orders')
-        .select('*, cafe_tables(*), profiles(name)')
+        .select('*, cafe_tables(*), profiles!employee_id(name)')
         .order('created_at', { ascending: false });
       
       if (ordersData) {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../../lib/supabase';
-import { TrendingUp, Download, Calendar } from 'lucide-react';
+import { TrendingUp, Download, Calendar, RefreshCw } from 'lucide-react';
 import { useToast } from '../../components/Toast';
 
 type DailySummary = {
@@ -95,12 +95,25 @@ export function RevenueReport() {
             <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" />
             <label className="text-sm font-medium text-gray-700">Select Date:</label>
           </div>
-          <input
-            type="date"
-            value={selectedDate}
-            onChange={(e) => setSelectedDate(e.target.value)}
-            className="w-full sm:w-auto px-3 sm:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-          />
+          <div className="flex items-center gap-2 w-full sm:w-auto">
+            <input
+              type="date"
+              value={selectedDate}
+              onChange={(e) => setSelectedDate(e.target.value)}
+              className="flex-1 sm:flex-initial px-3 sm:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+            />
+            <button
+              onClick={() => {
+                const today = new Date().toISOString().split('T')[0];
+                setSelectedDate(today);
+              }}
+              className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors text-sm"
+              title="Reset to Today"
+            >
+              <RefreshCw className="w-4 h-4" />
+              <span className="hidden sm:inline">Reset</span>
+            </button>
+          </div>
         </div>
       </div>
 

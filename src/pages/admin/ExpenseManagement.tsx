@@ -23,7 +23,7 @@ export function ExpenseManagement() {
     try {
       const { data, error } = await supabase
         .from('expenses')
-        .select('*, profiles(name)')
+        .select('*, profiles!recorded_by(name)')
         .order('created_at', { ascending: false });
 
       if (error) throw error;
@@ -130,7 +130,7 @@ export function ExpenseManagement() {
                 <th className="px-4 sm:px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                   Amount
                 </th>
-                <th className="px-4 sm:px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider hidden sm:table-cell">
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                   Recorded By
                 </th>
                 <th className="px-4 sm:px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider hidden md:table-cell">
@@ -150,7 +150,7 @@ export function ExpenseManagement() {
                 <td className="px-4 sm:px-6 py-3 sm:py-4">
                   <div className="font-semibold text-sm sm:text-base text-red-600">₹{expense.amount.toFixed(2)}</div>
                 </td>
-                <td className="px-4 sm:px-6 py-3 sm:py-4 hidden sm:table-cell">
+                <td className="px-4 sm:px-6 py-3 sm:py-4">
                   <div className="text-sm text-gray-600">{expense.profiles?.name || 'Unknown'}</div>
                 </td>
                 <td className="px-4 sm:px-6 py-3 sm:py-4 hidden md:table-cell">

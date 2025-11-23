@@ -76,7 +76,7 @@ function AppContent() {
     <div className="min-h-screen bg-gray-100">
       <Navigation activeTab={activeTab} onTabChange={setActiveTab} />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8 pb-20 md:pb-4 sm:pb-6 lg:pb-8">
         {activeTab === 'orders' && <Orders />}
         {activeTab === 'employees' && isAdmin && <EmployeeManagement />}
         {activeTab === 'menu' && isAdmin && <MenuManagement />}
