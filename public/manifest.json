@@ -1,7 +1,7 @@
 {
-  "name": "Chiya Mantralaya Management System",
-  "short_name": "Chiya Mantralaya",
-  "description": "Complete restaurant management system for Chiya Mantralaya",
+  "name": "Cafe Management System",
+  "short_name": "Cafe",
+  "description": "Complete restaurant management system for Cafe",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
