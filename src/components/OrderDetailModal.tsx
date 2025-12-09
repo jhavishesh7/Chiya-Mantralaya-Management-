@@ -62,9 +62,16 @@ export function OrderDetailModal({
             </div>
             <div>
               <p className="text-sm text-gray-600 mb-1">Status</p>
-              <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${statusColors[order.status]}`}>
-                {order.status.toUpperCase()}
-              </span>
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${statusColors[order.status]}`}>
+                  {order.status.toUpperCase()}
+                </span>
+                {order.status === 'paid' && order.payment_method === 'split' && (
+                  <span className="inline-block px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800">
+                    Split Payment
+                  </span>
+                )}
+              </div>
             </div>
             <div>
               <p className="text-sm text-gray-600 mb-1">Employee</p>
@@ -82,7 +89,7 @@ export function OrderDetailModal({
               <div>
                 <p className="text-sm text-gray-600 mb-1">Payment Method</p>
                 <p className="text-lg font-semibold text-gray-800 capitalize">
-                  {order.payment_method}
+                  {order.payment_method === 'split' ? 'Split (Cash + Online)' : order.payment_method}
                 </p>
               </div>
             )}

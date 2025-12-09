@@ -46,7 +46,7 @@ export type Order = {
   items: OrderItem[];
   status: 'taken' | 'prepared' | 'delivered' | 'paid';
   total_price: number;
-  payment_method: 'cash' | 'online' | null;
+  payment_method: 'cash' | 'online' | 'split' | null;
   created_at: string;
   updated_at: string;
 };

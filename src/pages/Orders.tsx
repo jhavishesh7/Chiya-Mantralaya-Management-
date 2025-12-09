@@ -209,6 +209,11 @@ export function Orders() {
                     <span className={`px-2 py-1 rounded-full text-xs font-medium flex-shrink-0 ${statusColors[order.status]}`}>
                       {order.status.toUpperCase()}
                     </span>
+                    {order.status === 'paid' && order.payment_method === 'split' && (
+                      <span className="px-2 py-1 rounded-full text-xs font-medium flex-shrink-0 bg-purple-100 text-purple-800">
+                        Split Payment
+                      </span>
+                    )}
                   </div>
                   <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600">
                     <span className="hidden sm:inline text-gray-500">•</span>
